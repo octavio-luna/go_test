@@ -1,5 +1,9 @@
 package main
 
+import (
+	"unicode"
+)
+
 /*
 STRING SPECS
 
@@ -33,5 +37,47 @@ string complies with the format, or false if the string does not comply
 
 //Estimated difficulty testValidity: low. Estimated time: 15 minutes
 
+//testValidity takes a string and returns true or false depending on whether it does or does not comply
+//with the format number-text[(optional)-number-text-...]
+//Check stores the last two values in the string (0 for numbers, 1 for - and 2 for letters), it´s used
+//to validate if the string format fits the required
+func testValidity(s string) bool {
+	//Check represents the last two chars.
+	//It is 0 when the char was an int, 1 when it was -, 2 when it was a letter
+	var check string = "00"
+	for i := 0; i < len(s); i++ {
+		if unicode.IsNumber(rune(s[i])) && (check == "21" || check == "00" || check == "10") {
+			if check == "21" {
+				check = "10"
+			} else {
+				check = "00"
+			}
+			if i == len(s)-1 {
+				return true
+			}
+		} else if string(s[i]) == `-` && (check == "00" || check == "10" || check == "22" || check == "12") {
+			if check == "00" || check == "10" {
+				check = "01"
+			} else if check == "22" || check == "12" {
+				check = "21"
+			}
+		} else if unicode.IsLetter(rune(s[i])) && (check == "22" || check == "12" || check == "01") {
+			if check == "22" || check == "12" {
+				check = "22"
+			} else {
+				check = "12"
+			}
+			if i == len(s)-1 {
+				return true
+			}
+		} else {
+			return false
+		}
+
+	}
+	return false
+}
+
 func main() {
+
 }
