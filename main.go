@@ -134,6 +134,48 @@ func wholeStory(s string) string {
 
 //Difficulty: Low. Estimated time:20 minutes
 
+//storyStats takes a string and returns the shortest word, the longest word,
+//the average word length and the list of all words from the string.
+//If the string does not contain text, it returns an empty string for
+//shortest and longest, 0 for the average word length and an empty list of strings
+func storyStats(s string) (string, string, float64, []string) {
+	var words []string
+	check := 1
+	str := ""
+	for i := 0; i < len(s); i++ {
+		if unicode.IsLetter(rune(s[i])) {
+			str = str + string(s[i])
+			check = 0
+		} else {
+			if check == 0 {
+				words = append(words, str)
+				str = ""
+			}
+			check = 1
+		}
+	}
+	if str != "" {
+		words = append(words, str)
+	}
+
+	if len(words) > 0 {
+		shortest := words[0]
+		longest := words[0]
+		var length float64 = 0
+		for i := 0; i < len(words); i++ {
+			if len(words[i]) > len(longest) {
+				longest = words[i]
+			}
+			if len(words[i]) < len(shortest) {
+				shortest = words[i]
+			}
+			length += float64(len(words[i]))
+		}
+		return shortest, longest, length / float64(len(words)), words
+	}
+	return "", "", 0, words
+
+}
+
 func main() {
-	wholeStory("12-hello-2-world")
 }
