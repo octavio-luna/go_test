@@ -117,7 +117,7 @@ func wholeStory(s string) string {
 			str = str + string(s[i])
 			check = 0
 		} else {
-			check = 0
+			check = 1
 		}
 	}
 	return str
