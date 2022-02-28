@@ -177,5 +177,10 @@ func storyStats(s string) (string, string, float64, []string) {
 
 }
 
+//Write a generate function, that takes boolean flag and generates random correct strings if
+//the parameter is true and random incorrect strings if the flag is false.
+
+//Difficulty: medium. Estimated time: 20 minutes
+
 func main() {
 }
