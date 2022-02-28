@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"unicode"
 )
 
@@ -82,6 +83,21 @@ func testValidity(s string) bool {
 
 //Function difficulty: low. Expected time: 10 minutes or less.
 
-func main() {
+//averageNumber takes a string and returns the average number of all the numbers in the
+//string (assuming that "each number" refers to each digit in the string, not to each whole number
+//e.g: 123-as-1-d would return 1.75)
+func averageNumber(s string) float64 {
+	var cantNums float64 = 0
+	var sum float64 = 0
+	for i := 0; i < len(s); i++ {
+		if unicode.IsNumber(rune(s[i])) {
+			cantNums += 1
+			sum += float64(s[i] - '0')
+		}
+	}
+	return float64(sum / cantNums)
+}
 
+func main() {
+	fmt.Println(averageNumber("123-ass-1-a"))
 }
