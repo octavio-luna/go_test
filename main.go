@@ -78,6 +78,10 @@ func testValidity(s string) bool {
 	return false
 }
 
+//-Write a function averageNumber that takes the string, and returns the average number from all the numbers
+
+//Function difficulty: low. Expected time: 10 minutes or less.
+
 func main() {
 
 }
