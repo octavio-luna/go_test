@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"unicode"
 )
 
@@ -104,6 +103,26 @@ func averageNumber(s string) float64 {
 
 //Difficulty: Low. Expected time: 10 minutes or less
 
+//wholeStory takes a string and returns the words in it with a space between different words
+//check is used to test whether it is or not required to add a space before the next char
+func wholeStory(s string) string {
+	//check is 0 while the last character was a letter and 1 when it wasn´t
+	check := 0
+	str := ""
+	for i := 0; i < len(s); i++ {
+		if unicode.IsLetter(rune(s[i])) {
+			if check == 1 {
+				str = str + " "
+			}
+			str = str + string(s[i])
+			check = 0
+		} else {
+			check = 1
+		}
+	}
+	return str
+}
+
 func main() {
-	fmt.Println(averageNumber("123-ass-1-a"))
+	wholeStory("12-hello-2-world")
 }
