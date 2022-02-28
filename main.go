@@ -98,6 +98,12 @@ func averageNumber(s string) float64 {
 	return float64(sum / cantNums)
 }
 
+//-Write a function wholeStory that takes the string, and returns a text that is composed
+//from all the text words separated by spaces, e.g. story called for the string 1-hello-2-world
+//should return text: "hello world"
+
+//Difficulty: Low. Expected time: 10 minutes or less
+
 func main() {
 	fmt.Println(averageNumber("123-ass-1-a"))
 }
