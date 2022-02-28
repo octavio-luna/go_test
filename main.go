@@ -123,6 +123,17 @@ func wholeStory(s string) string {
 	return str
 }
 
+/*
+-Write a function storyStats that returns four things:
+	-the shortest word
+	-the longest word
+	-the average word length
+	-the list (or empty list) of all words from the story that have
+	the length the same as the average length rounded up and down.
+*/
+
+//Difficulty: Low. Estimated time:20 minutes
+
 func main() {
 	wholeStory("12-hello-2-world")
 }
